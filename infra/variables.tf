@@ -46,3 +46,27 @@ variable "db_password" {
   type      = string
   sensitive = true
 }
+
+variable "ami_id" {
+  type        = string
+  description = "AMI de Ubuntu para las instancias EC2"
+  default     = "ami-0c02fb55956c7d316"
+}
+
+variable "frontend_app_name" {
+  type        = string
+  description = "Nombre visible del frontend"
+  default     = "Innovatech Frontend"
+}
+
+variable "backend_port" {
+  type        = number
+  description = "Puerto del backend"
+  default     = 8080
+}
+
+variable "aws_region" {
+  type        = string
+  description = "Región AWS"
+  default     = "us-east-1"
+}

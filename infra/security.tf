@@ -1,5 +1,5 @@
 resource "aws_security_group" "front_sg" {
-  name        = "orlando_front_sg"
+  name        = "front_sg"
   description = "Security Group para la capa Frontend"
   vpc_id      = aws_vpc.main.id
 
@@ -28,13 +28,13 @@ resource "aws_security_group" "front_sg" {
   }
 
   tags = {
-    Name = "orlando_front_sg"
+    Name  = "front_sg"
     Layer = "frontend"
   }
 }
 
 resource "aws_security_group" "back_sg" {
-  name        = "orlando_back_sg"
+  name        = "back_sg"
   description = "Security Group para la capa Backend"
   vpc_id      = aws_vpc.main.id
 
@@ -63,13 +63,13 @@ resource "aws_security_group" "back_sg" {
   }
 
   tags = {
-    Name = "orlando_back_sg"
+    Name  = "back_sg"
     Layer = "backend"
   }
 }
 
 resource "aws_security_group" "data_sg" {
-  name        = "orlando_data_sg"
+  name        = "data_sg"
   description = "Security Group para la capa Data"
   vpc_id      = aws_vpc.main.id
 
@@ -98,7 +98,7 @@ resource "aws_security_group" "data_sg" {
   }
 
   tags = {
-    Name = "orlando_data_sg"
+    Name  = "data_sg"
     Layer = "data"
   }
 }

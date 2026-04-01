@@ -19,10 +19,10 @@ cat > /var/www/html/index.html <<EOF
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>${frontend_app_name}</title>
+  <title>Innovatech Frontend</title>
 </head>
 <body style="font-family: Arial, sans-serif; text-align:center; margin-top:60px;">
-  <h1>${frontend_app_name}</h1>
+  <h1>Innovatech Frontend</h1>
   <p>Servidor Frontend desplegado en EC2 pública</p>
   <p>Docker, Git y Nginx instalados correctamente</p>
   <p>Arquitectura Lift & Shift - Innovatech</p>

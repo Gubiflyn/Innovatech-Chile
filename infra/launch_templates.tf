@@ -1,71 +1,59 @@
 resource "aws_launch_template" "front_lt" {
-  name_prefix   = "${var.project_name}-front-lt-"
-  image_id      = var.ami_id
+  name_prefix   = "front-lt-"
+  image_id      = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
   key_name      = var.key_name
 
+
   vpc_security_group_ids = [aws_security_group.front_sg.id]
 
-  iam_instance_profile {
-    name = aws_iam_instance_profile.ssm_profile.name
-  }
-
-  user_data = base64encode(templatefile("${path.module}/userdata/front.sh", {
-    frontend_app_name = var.frontend_app_name
-  }))
+  user_data = base64encode(file("${path.module}/userdata/front.sh"))
 
   tag_specifications {
     resource_type = "instance"
 
     tags = {
-      Name    = "${var.project_name}-front"
-      Project = var.project_name
-      Tier    = "frontend"
+      Name  = "front_lt"
+      Layer = "frontend"
     }
   }
 }
 
 resource "aws_launch_template" "back_lt" {
-  name_prefix   = "${var.project_name}-back-lt-"
-  image_id      = var.ami_id
+  name_prefix   = "back-lt-"
+  image_id      = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
   key_name      = var.key_name
 
+
   vpc_security_group_ids = [aws_security_group.back_sg.id]
 
-  iam_instance_profile {
-    name = aws_iam_instance_profile.ssm_profile.name
-  }
-
   user_data = base64encode(templatefile("${path.module}/userdata/back.sh", {
-    backend_port = var.backend_port
+    db_host      = aws_instance.data.private_ip
     db_name      = var.db_name
     db_user      = var.db_user
     db_password  = var.db_password
+    backend_port = 8080
   }))
 
   tag_specifications {
     resource_type = "instance"
 
     tags = {
-      Name    = "${var.project_name}-back"
-      Project = var.project_name
-      Tier    = "backend"
+      Name  = "back_lt"
+      Layer = "backend"
     }
   }
 }
 
 resource "aws_launch_template" "data_lt" {
-  name_prefix   = "${var.project_name}-data-lt-"
-  image_id      = var.ami_id
+  name_prefix   = "data-lt-"
+  image_id      = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
   key_name      = var.key_name
 
-  vpc_security_group_ids = [aws_security_group.data_sg.id]
 
-  iam_instance_profile {
-    name = aws_iam_instance_profile.ssm_profile.name
-  }
+  vpc_security_group_ids = [aws_security_group.data_sg.id]
 
   user_data = base64encode(templatefile("${path.module}/userdata/data.sh", {
     db_name     = var.db_name
@@ -77,9 +65,8 @@ resource "aws_launch_template" "data_lt" {
     resource_type = "instance"
 
     tags = {
-      Name    = "${var.project_name}-data"
-      Project = var.project_name
-      Tier    = "database"
+      Name  = "data_lt"
+      Layer = "data"
     }
   }
 }

@@ -19,7 +19,6 @@ resource "aws_instance" "front" {
   subnet_id              = aws_subnet.public_subnet.id
   vpc_security_group_ids = [aws_security_group.front_sg.id]
   key_name               = var.key_name
-  iam_instance_profile   = aws_iam_instance_profile.ec2_ssm_profile.name
   user_data              = file("${path.module}/userdata/front.sh")
 
   tags = {
@@ -34,7 +33,6 @@ resource "aws_instance" "data" {
   subnet_id              = aws_subnet.private_subnet.id
   vpc_security_group_ids = [aws_security_group.data_sg.id]
   key_name               = var.key_name
-  iam_instance_profile   = aws_iam_instance_profile.ec2_ssm_profile.name
 
   user_data = templatefile("${path.module}/userdata/data.sh", {
     db_name     = var.db_name
@@ -54,13 +52,13 @@ resource "aws_instance" "back" {
   subnet_id              = aws_subnet.private_subnet.id
   vpc_security_group_ids = [aws_security_group.back_sg.id]
   key_name               = var.key_name
-  iam_instance_profile   = aws_iam_instance_profile.ec2_ssm_profile.name
 
   user_data = templatefile("${path.module}/userdata/back.sh", {
-    db_host     = aws_instance.data.private_ip
-    db_name     = var.db_name
-    db_user     = var.db_user
-    db_password = var.db_password
+    db_host      = aws_instance.data.private_ip
+    db_name      = var.db_name
+    db_user      = var.db_user
+    db_password  = var.db_password
+    backend_port = 8080
   })
 
   tags = {

@@ -120,8 +120,9 @@ EC2 Data / Base de datos (Subred privada)
 ---
 
 ## Diagrama
-> Pendiente de integración del diagrama AWS realizado en Draw.io.
+A continuación se presenta el diagrama de arquitectura desplegada en AWS mediante Terraform:
 
+![Diagrama de arquitectura AWS](images/Diagrama%20AWS.png)
 ---
 
 ## Mejores prácticas

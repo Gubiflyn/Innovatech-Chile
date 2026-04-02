@@ -122,7 +122,7 @@ EC2 Data / Base de datos (Subred privada)
 
 A continuación se presenta el diagrama de arquitectura desplegada en AWS mediante Terraform:
 
-![Diagrama de arquitectura AWS](Diagrama AWS.png)
+![Diagrama de arquitectura AWS](images/Diagrama%20AWS.png)
 
 ## Mejores prácticas
 Este proyecto aplica las siguientes buenas prácticas:

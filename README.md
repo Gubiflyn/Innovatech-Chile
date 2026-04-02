@@ -5,7 +5,7 @@ Este proyecto corresponde a la implementación de una infraestructura en AWS aut
 
 La solución considera buenas prácticas de infraestructura como código (IaC), separando los recursos en módulos lógicos como red, seguridad, cómputo y variables de configuración, permitiendo una administración clara, escalable y reutilizable.
 
-La infraestructura está orientada a soportar el sistema **SmartLogix / Innovatech Solutions**, desplegando instancias EC2 dentro de subredes públicas y privadas, con conectividad segura y controlada.
+La infraestructura está orientada a soportar el sistema **Innovatech Solutions**, desplegando instancias EC2 dentro de subredes públicas y privadas, con conectividad segura y controlada.
 
 ---
 
@@ -119,9 +119,10 @@ EC2 Data / Base de datos (Subred privada)
 ---
 
 ## Diagrama
-> Pendiente de integración del diagrama AWS realizado en Draw.io.
 
----
+A continuación se presenta el diagrama de arquitectura desplegada en AWS mediante Terraform:
+
+![Diagrama de arquitectura AWS](Diagrama AWS.png)
 
 ## Mejores prácticas
 Este proyecto aplica las siguientes buenas prácticas:

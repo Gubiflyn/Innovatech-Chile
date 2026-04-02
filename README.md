@@ -30,9 +30,8 @@ infra/
 
 ### Orden de ejecución recomendado
 1. `terraform init`
-2. `terraform validate`
-3. `terraform plan`
-4. `terraform apply`
+2. `terraform plan`
+3. `terraform apply`
 
 Para eliminar la infraestructura:
 

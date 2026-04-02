@@ -2,7 +2,7 @@ project_name = "innovatech"
 aws_region   = "us-east-1"
 
 key_name   = "innova-key"
-my_ip_cidr = "152.230.70.146/32"
+my_ip_cidr = "190.114.33.6/32"
 
 instance_type = "t2.micro"
 

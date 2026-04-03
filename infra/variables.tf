@@ -47,11 +47,7 @@ variable "db_password" {
   sensitive = true
 }
 
-variable "ami_id" {
-  type        = string
-  description = "AMI de Ubuntu para las instancias EC2"
-  default     = "ami-0c02fb55956c7d316"
-}
+
 
 variable "frontend_app_name" {
   type        = string

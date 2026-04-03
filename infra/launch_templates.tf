@@ -1,6 +1,5 @@
 resource "aws_launch_template" "front_lt" {
   name_prefix   = "front-lt-"
-  image_id      = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
   key_name      = var.key_name
 
@@ -21,7 +20,6 @@ resource "aws_launch_template" "front_lt" {
 
 resource "aws_launch_template" "back_lt" {
   name_prefix   = "back-lt-"
-  image_id      = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
   key_name      = var.key_name
 
@@ -48,7 +46,6 @@ resource "aws_launch_template" "back_lt" {
 
 resource "aws_launch_template" "data_lt" {
   name_prefix   = "data-lt-"
-  image_id      = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
   key_name      = var.key_name
 
